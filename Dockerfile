@@ -5,12 +5,10 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
-COPY requirements.txt /app/requirements.txt
-RUN pip install --no-cache-dir -r /app/requirements.txt
+# Copy repo into image (safer for monorepos/subfolders)
+COPY . /app
 
-COPY backend /app/backend
-COPY frontend /app/frontend
-COPY README.md /app/README.md
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
 COPY start.sh /app/start.sh
 RUN chmod +x /app/start.sh
