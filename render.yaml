@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: sorte-na-bet-cfo-dashboard
+    env: docker
+    plan: starter
+    autoDeploy: true
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: PORT
+        value: 8501
+      - key: DATA_DIR
+        value: /app/data
+      - key: API_BASE
+        value: http://127.0.0.1:8000
+      - key: STREAMLIT_BROWSER_GATHER_USAGE_STATS
+        value: "false"
+      - key: STREAMLIT_TELEMETRY_ENABLED
+        value: "false"
